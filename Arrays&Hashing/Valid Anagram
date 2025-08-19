@@ -1,0 +1,27 @@
+Valid Anagram
+# @param {String} s
+# @param {String} t
+# @return {Boolean}
+def is_anagram(s, t)
+# String length check
+    return false if s.length != t.length
+    map = {}
+    # Entering frequnecy of characters of string s into map
+    s.each_char do |str|
+        if map.key?(str)
+            map[str] += 1
+        else
+            map[str] = 1
+        end
+    end
+# Checking the frequencies of characters matches in t string  
+    t.each_char do |tstr|
+        if map.key?(tstr) && map[tstr] > 0
+           map[tstr] -= 1
+        else
+          return false
+        end
+        
+    end 
+    return true   
+end
