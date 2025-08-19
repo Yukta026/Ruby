@@ -1,0 +1,18 @@
+# @param {String[]} strs
+# @return {String[][]}
+def group_anagrams(strs)
+# Check if string array empty or null
+    return [] if strs.nil? || strs.empty?
+
+    map = Hash.new { |h,k| h[k] = []}
+    strs.each do |word|
+# Maintaining key signature for each word
+     count = Array.new(26,0)
+     word.each_char { |ch| count[ch.ord - 'a'.ord] += 1}
+     key = count.join('#')
+# Adding words with same key signature
+     map[key] << word
+    end
+    map.values
+end
+      
