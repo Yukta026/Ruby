@@ -1,0 +1,21 @@
+
+# @param {String} s
+# @return {Integer}
+def first_uniq_char(s)
+# Check if string null
+   return  -1 if s.nil? 
+
+# Initialize map with 0   
+   map = Hash.new(0)
+   s.each_char { |ch| map[ch] +=1}
+    
+# Return index of first unique character found
+   s.each_char.with_index do |ch,i|
+    
+     return i if map[ch]== 1
+    end
+    return -1
+end
+
+    
+
