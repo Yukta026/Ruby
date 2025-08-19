@@ -1,0 +1,29 @@
+# @param {String} s1
+# @param {String} s2
+# @return {Boolean}
+def check_inclusion(s1, s2)
+# Substring doesn't exist if string 1 is greater than string 2
+    return false if s1.length > s2.length
+
+    map = Hash.new(0)
+# Mapping frequencies of characters of string 1 in map
+    s1.each_char {|ch| map[ch] += 1}
+
+    
+
+    window = Hash.new(0)
+    s2.each_char.with_index do |ch,i|
+        window[ch] += 1
+# Creating sliding window of length of first string        
+        if i >= s1.length
+         left_char = s2[i - s1.length]
+# Remove characters from map as window slides
+         window[left_char] -= 1
+         window.delete(left_char) if window[left_char] == 0
+         end
+# Compare both maps
+        return true if map == window
+        end
+      
+        return false
+end
