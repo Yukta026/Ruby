@@ -1,0 +1,17 @@
+# @param {Integer} n
+# @return {Boolean}
+def is_happy(n)
+    slow = n
+    fast = n
+    loop do
+     slow = next_num(slow)
+     fast = next_num(next_num(fast))
+     return true if fast == 1
+     return false if fast == slow
+    end
+
+end
+
+def next_num(n)
+ n.to_s.chars.map { |d| d.to_i**2}.sum
+end
