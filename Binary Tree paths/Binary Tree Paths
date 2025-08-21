@@ -1,0 +1,29 @@
+# Definition for a binary tree node.
+# class TreeNode
+#     attr_accessor :val, :left, :right
+#     def initialize(val = 0, left = nil, right = nil)
+#         @val = val
+#         @left = left
+#         @right = right
+#     end
+# end
+# @param {TreeNode} root
+# @return {String[]}
+def binary_tree_paths(root)
+    ans = []
+    return ans if root.nil?
+
+    depthTraversal(root,"",ans)
+    ans
+end
+
+def depthTraversal(root,path,ans)
+ return if root.nil? 
+ path += root.val.to_s
+ if root.left.nil? && root.right.nil?
+  ans << path
+ end
+ path += "->"
+ depthTraversal(root.left,path,ans)
+ depthTraversal(root.right,path,ans)
+end
