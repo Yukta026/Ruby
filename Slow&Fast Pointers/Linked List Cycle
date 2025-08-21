@@ -1,0 +1,27 @@
+# Definition for singly-linked list.
+# class ListNode
+#     attr_accessor :val, :next
+#     def initialize(val)
+#         @val = val
+#         @next = nil
+#     end
+# end
+
+# @param {ListNode} head
+# @return {Boolean}
+def hasCycle(head)
+# Check if head is null or if there's single node
+    return false if head.nil? || head.next.nil? 
+    # Fast & Slow pointer approach
+    fast = head;
+    slow = head;
+    while fast && fast.next
+        fast = fast.next.next;
+        slow = slow.next;
+        # If pointers meet, cycle exists
+        return true if fast == slow;
+        
+        
+    end
+    false;
+end
