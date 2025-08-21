@@ -1,0 +1,15 @@
+# @param {Integer[][]} intervals
+# @return {Integer[][]}
+def merge(intervals)
+    return intervals if intervals.length <= 1
+    intervals.sort_by! { |i| i[0]}
+    merged = []
+    intervals.each do |interval|
+     if  merged.empty? || merged[-1][1] < interval[0]
+      merged.push(interval)
+     else
+      merged[-1][1] = [merged[-1][1],interval[1]].max
+     end
+    end
+    merged
+end
