@@ -1,0 +1,21 @@
+# @param {String} s
+# @return {Integer}
+def length_of_longest_substring(s)
+    map = {}
+    left =0
+    maxLength = 0
+    # Sliding window + Hashmap approach
+    s.chars.each_with_index do |c,right|
+    # Shrinking the window to store recent occurrence of existing char
+      if map.key?(c)
+        left = [left,map[c]+1].max
+      end
+    
+      map[c] = right
+      # Computing maxLength of window
+      maxLength = [maxLength,right-left+1].max
+    end
+
+    maxLength 
+ 
+end
